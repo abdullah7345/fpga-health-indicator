@@ -15,7 +15,7 @@ The design was verified via simulation and is set up for **Hardware Emulation** 
 **Top Level Structure:**
 `Input (Switch/Sensor)` -> `Synchronizer` -> `Glitch Filter` -> `FSM` -> `Blinker` -> `LED Output`
 
-![Design Notes](rough_hardware_implementationofvcode.pdf)
+![Design Notes](docs/rough_hardware_implementationofvcode.pdf)
 *(Original design notes showing FSM states and Counter logic)*
 
 ## Simulation Results
