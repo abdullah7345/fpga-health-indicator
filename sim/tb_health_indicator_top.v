@@ -29,7 +29,7 @@ module tb_health_indicator_top();
                  $time, reset, Vout, relay_output, red_led, green_led);
 
 
-        // --- A. Initialize ---
+        
         clk = 0;
         reset = 0; // Hold Reset (Active Low)
         Vout = 0;  // No heat initially
@@ -39,7 +39,7 @@ module tb_health_indicator_top();
         
         #20;
 
-        // --- B. Test Noise Rejection (The Glitch) ---
+       
         // Threshold is set to 10. We pulse Vout for 50ns (5 cycles).
         // The system should IGNORE this because 5 < 10.
         
@@ -51,7 +51,7 @@ module tb_health_indicator_top();
         #50; 
         // CHECK: Relay should be 0. RedLED should be 0. GreenLED should be 1.
 
-        // --- C. Test True Fault (The Overheat) ---
+        
         // We hold Vout high for >10 cycles.
         
         Vout = 1;
@@ -60,14 +60,14 @@ module tb_health_indicator_top();
         #200; 
         // CHECK: By now, Relay should be 1. RedLED should be blinking (toggling).
         
-        // --- D. Test Latching Logic ---
+       
         // The sensor cools down (Vout = 0), but the alarm MUST stay on.
         
         Vout = 0;
         #200; 
         // CHECK: Relay must stay 1. RedLED must keep blinking.
         
-        // --- E. Test Manual Reset ---
+        
         // Press the reset button to clear the alarm.
         
         reset = 0; 
@@ -79,5 +79,6 @@ module tb_health_indicator_top();
         
         $stop;
     end
+
 
 endmodule
